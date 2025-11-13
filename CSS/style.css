@@ -196,11 +196,12 @@ header nav ul li a:hover {
 .form-container {
   display: flex;
   justify-content: center;
+  margin: 15px auto; /* REDUCIDO: Menor margen vertical (era 30px) */
+  padding: 0; /* CAMBIADO: Eliminado padding interno (era 10px) */
   margin: 30px auto;
-  padding: 10px;
   max-width: 1300px;
   width: 100%;
-  overflow: auto;
+  overflow: hidden; /* MANTENIDO: Previene scroll no deseado */
 }
 
 iframe {
@@ -208,6 +209,8 @@ iframe {
   max-width: 1300px;
   height: 2033px;
   border: none;
+  height: 520px; /* REDUCIDO: Altura considerablemente menor (era 2033px) */
+  border-radius: 8px; /* AÑADIDO: Esquinas redondeadas para mejor estética */
 }
 
 /* Ajustes Responsive para el Slider */
@@ -268,6 +271,12 @@ iframe {
     border-radius: 8px;
     box-shadow: var(--shadow-light); /* Sombra muy sutil */
 }
+
+/* Ajuste específico para reducir espacio en cuestionario */
+#cuestionario.content-section {
+    padding: 30px 0 20px 0; /* Top: 30px, Bottom: 20px */
+  }
+
 
 /* Alternar colores de fondo para las secciones para un efecto sutil */
 .content-section:nth-of-type(even) { /* Secciones pares */
@@ -484,5 +493,132 @@ footer {
     .importante {
         padding: 15px;
         font-size: 0.9rem;
+    }
+}
+
+/* ================================= */
+/* SECCIÓN CONTACTO - DISEÑO MODERNO */
+/* ================================= */
+.contact-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    color: var(--text-color-light);
+    
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: column; /* Cambiado de flex a column */
+    align-items: center; /* Centrado horizontal */
+    text-align: center; /* Centrado del texto */
+    gap: 15px;
+    padding: 25px;
+    background: var(--white-color);
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.contact-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px; /* Un poco más grande */
+    height: 60px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.contact-icon.whatsapp {
+    background: #25D366;
+    color: white;
+}
+
+.contact-icon.email {
+    background: var(--primary-color);
+    color: white;
+}
+
+.contact-info {
+    width: 100%; /* Ocupa todo el ancho */
+    text-align: center; /* Centra todo el contenido */
+}
+
+.contact-info h3 {
+    margin: 0 0 15px 0;
+    color: var(--text-color-dark);
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.contact-info a {
+    display: block;
+    color: var(--primary-color);
+    text-decoration: none;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    text-align: center; /* Centra el texto dentro del enlace */
+}
+
+.contact-info a:hover {
+    background: rgba(63, 81, 181, 0.1);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.contact-note {
+    text-align: center;
+    margin-top: 30px;
+    font-style: italic;
+    color: var(--text-color-light);
+    font-size: 0.95rem;
+    
+}
+
+/* Asegurar que el contenedor esté centrado */
+#contacto .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Responsive para Contacto */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .contact-item {
+        padding: 20px;
+    }
+    
+    .contact-info h3 {
+        font-size: 1.2rem;
+    }
+    
+    .contact-subtitle,
+    .contact-note {
+        text-align: center;
+        padding: 0 15px;
     }
 }
