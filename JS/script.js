@@ -110,3 +110,40 @@ function initRequisitosAnimation() {
 document.addEventListener('DOMContentLoaded', function() {
     initRequisitosAnimation();
 });
+
+// Animación para la sección Plan de Estudios
+function initPlanEstudiosAnimation() {
+    const featureItems = document.querySelectorAll('.feature-item');
+    const planImage = document.querySelector('.image-container');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (entry.target.classList.contains('feature-item')) {
+                    entry.target.classList.add('visible');
+                }
+                if (entry.target === planImage) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'perspective(1000px) rotateY(-5deg) rotateX(5deg)';
+                }
+            }
+        });
+    }, {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    featureItems.forEach(item => {
+        observer.observe(item);
+    });
+    
+    if (planImage) {
+        observer.observe(planImage);
+    }
+}
+
+// Llamar la función en DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+    initRequisitosAnimation();
+    initPlanEstudiosAnimation(); // ← Agregar esta línea
+});

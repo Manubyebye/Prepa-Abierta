@@ -683,3 +683,160 @@ footer {
     color: var(--primary-color);
     min-width: 180px;
 }
+
+/* ================================= */
+/* SECCIÓN PLAN DE ESTUDIOS - EFECTOS */
+/* ================================= */
+
+.plan-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.plan-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    color: var(--text-color-light);
+}
+
+.plan-features {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    background: var(--white-color);
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--primary-color);
+}
+
+.feature-item:hover {
+    transform: translateX(10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.feature-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.feature-text h3 {
+    margin: 0 0 8px 0;
+    color: var(--text-color-dark);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.feature-text p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-color-light);
+}
+
+/* Contenedor de imagen con efectos */
+.plan-image {
+    position: relative;
+}
+
+.image-container {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+    transition: all 0.5s ease;
+}
+
+.image-container:hover {
+    transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.floating-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.image-container:hover .floating-image {
+    transform: scale(1.05);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(63, 81, 181, 0.1) 0%,
+        rgba(255, 152, 0, 0.1) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-container:hover .image-overlay {
+    opacity: 1;
+}
+
+/* Animaciones para los feature items */
+.feature-item {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 0.6s ease;
+}
+
+.feature-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Delays escalonados */
+.feature-item:nth-child(1) { transition-delay: 0.1s; }
+.feature-item:nth-child(2) { transition-delay: 0.3s; }
+.feature-item:nth-child(3) { transition-delay: 0.5s; }
+
+/* Responsive */
+@media (max-width: 968px) {
+    .plan-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .image-container {
+        transform: none;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .image-container:hover {
+        transform: scale(1.02);
+    }
+}
+
+@media (max-width: 768px) {
+    .feature-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .floating-image {
+        height: 300px;
+    }
+}
