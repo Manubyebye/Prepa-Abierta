@@ -83,3 +83,30 @@ document.addEventListener('DOMContentLoaded', function () {
         heroSlider.addEventListener('mouseleave', startAutoSlide);
     }
 });
+
+// Animación para requisitos al hacer scroll
+function initRequisitosAnimation() {
+    const requisitosItems = document.querySelectorAll('.requisito-item');
+    
+    // Crear observer para detectar cuando los elementos son visibles
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.1, // Se activa cuando el 10% del elemento es visible
+        rootMargin: '0px 0px -50px 0px' // Se activa un poco antes de que llegue al viewport
+    });
+
+    // Observar cada item de requisitos
+    requisitosItems.forEach(item => {
+        observer.observe(item);
+    });
+}
+
+// Llamar la función cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', function() {
+    initRequisitosAnimation();
+});

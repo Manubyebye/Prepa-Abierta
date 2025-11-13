@@ -622,3 +622,64 @@ footer {
         padding: 0 15px;
     }
 }
+
+
+/* ================================= */
+/* ANIMACIONES PARA REQUISITOS */
+/* ================================= */
+.requisito-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+    margin-bottom: 15px;
+}
+
+.requisito-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Retrasos escalonados para cada item */
+.requisito-item:nth-child(1) { transition-delay: 0.1s; }
+.requisito-item:nth-child(2) { transition-delay: 0.2s; }
+.requisito-item:nth-child(3) { transition-delay: 0.3s; }
+.requisito-item:nth-child(4) { transition-delay: 0.4s; }
+.requisito-item:nth-child(5) { transition-delay: 0.5s; }
+.requisito-item:nth-child(6) { transition-delay: 0.6s; }
+
+/* Mejora visual para los requisitos */
+.requisitos-list {
+    list-style: none;
+    padding: 0;
+    margin: 30px 0;
+}
+
+.requisito-item {
+    background-color: var(--white-color);
+    border-left: 4px solid var(--primary-color);
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: var(--shadow-light);
+    transition: all 0.3s ease;
+}
+
+.requisito-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.requisito-icon {
+    font-size: 1.3rem;
+    width: 30px;
+    text-align: center;
+}
+
+.requisito-item strong {
+    color: var(--primary-color);
+    min-width: 180px;
+}
